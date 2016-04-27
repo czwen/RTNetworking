@@ -15,8 +15,12 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 
-@interface AIFAppContext ()
+static NSString *kAIFKeychainServiceName = @"AIFKeychainServiceName";
+static NSString *kAIFUDIDName = @"AIFUDIDName";
+static NSString *kAIFPasteboardType = @"AIFPasteboardType";
 
+@interface AIFAppContext ()
+@property (nonatomic, strong) NSDictionary *plist;
 @property (nonatomic, strong) UIDevice *device;
 @property (nonatomic, copy, readwrite) NSString *m;
 @property (nonatomic, copy, readwrite) NSString *guid;
@@ -36,6 +40,9 @@
 @property (nonatomic, copy, readwrite) NSString *ct;
 @property (nonatomic, copy, readwrite) NSString *pmodel;
 
+@property (nonatomic, copy, readwrite) NSString *keychainServiceName;
+@property (nonatomic, copy, readwrite) NSString *udidName;
+@property (nonatomic, copy, readwrite) NSString *pasteboardType;
 @end
 
 @implementation AIFAppContext
@@ -316,6 +323,39 @@
     } else {
         return [[AFNetworkReachabilityManager sharedManager] isReachable];
     }
+}
+
+- (NSDictionary *)plist{
+    if (!_plist) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"AIFNetworkingConfiguration" ofType:@"plist"];
+        _plist = [[NSDictionary alloc] initWithContentsOfFile:path];
+    }
+    return _plist;
+}
+
+- (NSString *)keychainServiceName{
+    if (_keychainServiceName == nil) {
+        _keychainServiceName = [[self.plist valueForKey:kAIFKeychainServiceName] AIF_defaultValue:[self bundleID]];
+    }
+    return _keychainServiceName;
+}
+
+- (NSString *)udidName{
+    if (_udidName == nil) {
+        _udidName = [[self.plist valueForKey:kAIFUDIDName] AIF_defaultValue:[self bundleID]];
+    }
+    return _udidName;
+}
+
+- (NSString *)pasteboardType{
+    if (_pasteboardType == nil) {
+        _pasteboardType = [[self.plist valueForKey:kAIFPasteboardType] AIF_defaultValue:[self bundleID]];
+    }
+    return _pasteboardType;
+}
+
+- (NSString *)bundleID{
+    return [[NSBundle mainBundle]bundleIdentifier];
 }
 
 #pragma mark - public methods

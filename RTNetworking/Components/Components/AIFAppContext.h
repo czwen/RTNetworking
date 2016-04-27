@@ -55,6 +55,12 @@
 @property (nonatomic, copy, readonly) NSString *ct;
 @property (nonatomic, copy, readonly) NSString *pmodel;
 
+@property (nonatomic, copy, readonly) NSString *bundleID;
+// 从 AIFNetworkingConfiguration.plist获取
+@property (nonatomic, copy, readonly) NSString *keychainServiceName;
+@property (nonatomic, copy, readonly) NSString *udidName;
+@property (nonatomic, copy, readonly) NSString *pasteboardType;
+
 + (instancetype)sharedInstance;
 - (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appType:(AIFAppType)appType ccid:(NSString *)ccid;
 

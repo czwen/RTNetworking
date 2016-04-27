@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 anjuke. All rights reserved.
 //
 
+#import "AIFAppContext.h"
+
 #ifndef AIFNetworking_AIFNetworkingConfiguration_h
 #define AIFNetworking_AIFNetworkingConfiguration_h
 
@@ -26,51 +28,8 @@ typedef NS_ENUM(NSUInteger, AIFURLResponseStatus)
 
 static NSTimeInterval kAIFNetworkingTimeoutSeconds = 20.0f;
 
-static NSString *AIFKeychainServiceName = @"com.anjukeApps";
-static NSString *AIFUDIDName = @"anjukeAppsUDID";
-static NSString *AIFPasteboardType = @"anjukeAppsContent";
-
 static BOOL kAIFShouldCache = NO;
 static NSTimeInterval kAIFCacheOutdateTimeSeconds = 300; // 5分钟的cache过期时间
 static NSUInteger kAIFCacheCountLimit = 1000; // 最多1000条cache
-
-// anjuke
-extern NSString * const kAIFServiceAnjuke;
-extern NSString * const kAIFServiceAnjukeREST_4;
-extern NSString * const kAIFServiceAnjukeCorp;
-extern NSString * const kAIFServiceAnjukeRest;
-extern NSString * const kAIFServiceAnjukeV5;
-
-// x
-extern NSString * const kAIFServiceXRest;
-extern NSString * const kAIFServiceXAudioRest;
-extern NSString * const kAIFServiceXPublicRest;
-extern NSString * const kAIFServiceXUnread;
-
-// broker
-extern NSString * const kAIFServiceBrokerRest;
-extern NSString * const kAIFServiceBrokerCorp;
-extern NSString * const kAIFServiceBroker;
-
-// haozu
-extern NSString * const kAIFServiceHaozu;
-extern NSString * const kAIFServiceHaozuCorp;
-
-// xinfang
-extern NSString * const kAIFServiceXinfang;
-
-// jinpu
-extern NSString * const kAIFServiceJinpuRest;
-
-// other
-extern NSString * const kAIFServiceCoordinatorChannel;
-extern NSString * const kAIFServiceMarket;
-extern NSString * const kAIFServiceMember;
-extern NSString * const kAIFServiceNotification;
-extern NSString * const kAIFServiceTrace;
-extern NSString * const kAIFServiceURLChange;
-
-// Google Map API
-extern NSString * const kAIFServiceGoogleMapAPIDirections;
 
 #endif
