@@ -8,6 +8,7 @@
 
 #import "AIFUDIDGenerator.h"
 #import "AIFNetworkingConfiguration.h"
+#import "AIFAppContext.h"
 
 @implementation AIFUDIDGenerator
 
