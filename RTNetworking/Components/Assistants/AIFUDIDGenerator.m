@@ -23,14 +23,14 @@
 
 - (NSString *)UDID
 {
-    NSData *udidData = [self searchKeychainCopyMatching:AIFUDIDName];
+    NSData *udidData = [self searchKeychainCopyMatching:[AIFAppContext sharedInstance].udidName];
     NSString *udid = nil;
     if (udidData != nil) {
         NSString *temp = [[NSString alloc] initWithData:udidData encoding:NSUTF8StringEncoding];
         udid = [NSString stringWithFormat:@"%@", temp];
     }
     if (udid.length == 0) {
-        udid = [self readPasteBoradforIdentifier:AIFUDIDName];
+        udid = [self readPasteBoradforIdentifier:[AIFAppContext sharedInstance].udidName];
     }
     return udid;
 }
@@ -38,14 +38,14 @@
 - (void)saveUDID:(NSString *)udid
 {
     BOOL saveOk = NO;
-    NSData *udidData = [self searchKeychainCopyMatching:AIFUDIDName];
+    NSData *udidData = [self searchKeychainCopyMatching:[AIFAppContext sharedInstance].udidName];
     if (udidData == nil) {
-        saveOk = [self createKeychainValue:udid forIdentifier:AIFUDIDName];
+        saveOk = [self createKeychainValue:udid forIdentifier:[AIFAppContext sharedInstance].udidName];
     }else{
-        saveOk = [self updateKeychainValue:udid forIdentifier:AIFUDIDName];
+        saveOk = [self updateKeychainValue:udid forIdentifier:[AIFAppContext sharedInstance].udidName];
     }
     if (!saveOk) {
-        [self createPasteBoradValue:udid forIdentifier:AIFUDIDName];
+        [self createPasteBoradValue:udid forIdentifier:[AIFAppContext sharedInstance].udidName];
     }
 }
 
@@ -58,7 +58,7 @@
     NSData *encodedIdentifier = [identifier dataUsingEncoding:NSUTF8StringEncoding];
     [searchDictionary setObject:encodedIdentifier forKey:(__bridge id)kSecAttrGeneric];
     [searchDictionary setObject:encodedIdentifier forKey:(__bridge id)kSecAttrAccount];
-    [searchDictionary setObject:AIFKeychainServiceName forKey:(__bridge id)kSecAttrService];
+    [searchDictionary setObject:[AIFAppContext sharedInstance].keychainServiceName forKey:(__bridge id)kSecAttrService];
     
     return searchDictionary;
 }
@@ -120,17 +120,17 @@
 
 - (void)createPasteBoradValue:(NSString *)value forIdentifier:(NSString *)identifier
 {
-    UIPasteboard *pb = [UIPasteboard pasteboardWithName:AIFKeychainServiceName create:YES];
+    UIPasteboard *pb = [UIPasteboard pasteboardWithName:[AIFAppContext sharedInstance].keychainServiceName create:YES];
     NSDictionary *dict = [NSDictionary dictionaryWithObject:value forKey:identifier];
     NSData *dictData = [NSKeyedArchiver archivedDataWithRootObject:dict];
-    [pb setData:dictData forPasteboardType:AIFPasteboardType];
+    [pb setData:dictData forPasteboardType:[AIFAppContext sharedInstance].pasteboardType];
 }
 
 - (NSString *)readPasteBoradforIdentifier:(NSString *)identifier
 {
     
-    UIPasteboard *pb = [UIPasteboard pasteboardWithName:AIFKeychainServiceName create:YES];
-    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:[pb dataForPasteboardType:AIFPasteboardType]];
+    UIPasteboard *pb = [UIPasteboard pasteboardWithName:[AIFAppContext sharedInstance].keychainServiceName create:YES];
+    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:[pb dataForPasteboardType:[AIFAppContext sharedInstance].pasteboardType]];
     return [dict objectForKey:identifier];
 }
 @end
