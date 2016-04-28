@@ -23,7 +23,8 @@ Pod::Spec.new do |s|
   			"RTNetworking/Components/Components/*.{h,m}",
   			"RTNetworking/Components/Services/*.{h,m}",
   			"RTNetworking/Components/Components/LogComponents/*.{h,m}",
-  			"RTNetworking/Components/Components/CacheComponents/*.{h,m}"
+  			"RTNetworking/Components/Components/CacheComponents/*.{h,m}",
+  			"RTNetworking/Components/Components/LocationComponents/**/*.{h,m}"
 
 
 
