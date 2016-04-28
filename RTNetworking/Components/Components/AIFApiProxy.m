@@ -60,35 +60,14 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
 #pragma mark - public methods
 - (NSInteger)callGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"GET" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
     NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
     return [requestId integerValue];
 }
 
 - (NSInteger)callPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generatePOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callRestfulGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRestfulGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callRestfulPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRestfulPOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callGoogleMapAPIWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)serviceIdentifier success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateGoolgeMapAPIRequestWithParams:params serviceIdentifier:serviceIdentifier];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"POST" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
     NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
     return [requestId integerValue];
 }

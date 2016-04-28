@@ -7,7 +7,6 @@
 //
 
 #import "AIFRequestGenerator.h"
-#import "AIFSignatureGenerator.h"
 #import "AIFServiceFactory.h"
 #import "AIFCommonParamsGenerator.h"
 #import "NSDictionary+AXNetworkingMethods.h"
@@ -49,101 +48,47 @@
     return sharedInstance;
 }
 
-- (NSURLRequest *)generateGETRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
+- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
 {
     AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
     
+    NSDictionary *commonParameters = [service commonParamsDictionary];
     NSMutableDictionary *sigParams = [NSMutableDictionary dictionaryWithDictionary:requestParams];
-    sigParams[@"api_key"] = service.publicKey;
-    NSString *signature = [AIFSignatureGenerator signGetWithSigParams:sigParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey];
+    NSMutableDictionary *allParams;
+    NSDictionary *signature;
     
-    NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:[AIFCommonParamsGenerator commonParamsDictionary]];
-    [allParams addEntriesFromDictionary:sigParams];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?%@&sig=%@", service.apiBaseUrl, service.apiVersion, methodName, [allParams AIF_urlParamsStringSignature:NO], signature];
+    BOOL needSignture = [service.signature respondsToSelector:@selector(signWithSigParams:methodName:apiVersion:privateKey:publicKey:)];
     
-    NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:NULL];
-    request.timeoutInterval = kAIFNetworkingTimeoutSeconds;
-    request.requestParams = requestParams;
-    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"GET"];
-    return request;
-}
-
-- (NSURLRequest *)generatePOSTRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
-{
-    AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    NSString *signature = [AIFSignatureGenerator signPostWithApiParams:requestParams privateKey:service.privateKey publicKey:service.publicKey];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?api_key=%@&sig=%@&%@", service.apiBaseUrl, service.apiVersion, methodName, service.publicKey, signature, [[AIFCommonParamsGenerator commonParamsDictionary] AIF_urlParamsStringSignature:NO]];
-    
-    NSURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"POST" URLString:urlString parameters:requestParams error:NULL];
-    request.requestParams = requestParams;
-    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"POST"];
-    return request;
-}
-
-- (NSURLRequest *)generateRestfulGETRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
-{
-    NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:[AIFCommonParamsGenerator commonParamsDictionary]];
-    [allParams addEntriesFromDictionary:requestParams];
-    
-    AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    NSString *signature = [AIFSignatureGenerator signRestfulGetWithAllParams:allParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?%@", service.apiBaseUrl, service.apiVersion, methodName, [allParams AIF_urlParamsStringSignature:NO]];
-    
-    NSDictionary *restfulHeader = [self commRESTHeadersWithService:service signature:signature];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kAIFNetworkingTimeoutSeconds];
-    request.HTTPMethod = @"GET";
-    [restfulHeader enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [request setValue:obj forHTTPHeaderField:key];
-    }];
-    request.requestParams = requestParams;
-    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"RESTful GET"];
-    return request;
-}
-
-- (NSURLRequest *)generateRestfulPOSTRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
-{
-    AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    NSDictionary *commonParams = [AIFCommonParamsGenerator commonParamsDictionary];
-    NSString *signature = [AIFSignatureGenerator signRestfulPOSTWithApiParams:requestParams commonParams:commonParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?&%@", service.apiBaseUrl, service.apiVersion, methodName, [commonParams AIF_urlParamsStringSignature:NO]];
-    
-    NSDictionary *restfulHeader = [self commRESTHeadersWithService:service signature:signature];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kAIFNetworkingTimeoutSeconds];
-    request.HTTPMethod = @"POST";
-    [restfulHeader enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [request setValue:obj forHTTPHeaderField:key];
-    }];
-    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:requestParams options:NSJSONWritingPrettyPrinted error:NULL];
-    request.requestParams = requestParams;
-    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"RESTful POST"];
-    return request;
-}
-
-- (NSURLRequest *)generateGoolgeMapAPIRequestWithParams:(NSDictionary *)requestParams serviceIdentifier:(NSString *)serviceIdentifier
-{
-    AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    NSString *paramsString = [requestParams AIF_urlParamsStringSignature:NO];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@", service.apiBaseUrl, service.apiVersion, paramsString]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kAIFNetworkingTimeoutSeconds];
-    [request setValue:@"zh-CN,zh;q=0.8,en;q=0.6" forHTTPHeaderField:@"Accept-Language"];
-    request.requestParams = requestParams;
-    [AIFLogger logDebugInfoWithRequest:request apiName:@"Google Map API" service:service requestParams:requestParams httpMethod:@"GET"];
-    return request;
-}
-
-#pragma mark - private methods
-- (NSDictionary *)commRESTHeadersWithService:(AIFService *)service signature:(NSString *)signature
-{
-    NSMutableDictionary *headerDic = [NSMutableDictionary dictionary];
-    [headerDic setValue:signature forKey:@"sig"];
-    [headerDic setValue:service.publicKey forKey:@"key"];
-    [headerDic setValue:@"application/json" forKey:@"Accept"];
-    [headerDic setValue:@"application/json" forKey:@"Content-Type"];
-    NSDictionary *loginResult = [[NSUserDefaults standardUserDefaults] objectForKey:@"______"];
-    if (loginResult[@"auth_token"]) {
-        [headerDic setValue:loginResult[@"auth_token"] forKey:@"AuthToken"];
+    if (needSignture) {
+        
+        [sigParams addEntriesFromDictionary:service.publicKey];
+        
+        if (service.isSingtureAllParamters) {
+            
+            signature = [service.signature signWithSigParams:allParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey.allValues.firstObject];
+            
+        }else{
+            
+            signature = [service.signature signWithSigParams:sigParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey.allValues.firstObject];
+            
+        }
+        [sigParams addEntriesFromDictionary:signature];
     }
-    return headerDic;
+    
+    [sigParams addEntriesFromDictionary:commonParameters];
+    allParams = sigParams;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@", service.apiBaseUrl, service.apiVersion, methodName];
+    
+    NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
+    
+    request.allHTTPHeaderFields = [service headersDictionary];
+    
+    request.timeoutInterval = kAIFNetworkingTimeoutSeconds;
+    
+    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:method];
+    
+    return request;
 }
 
 @end
