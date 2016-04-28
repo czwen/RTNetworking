@@ -147,12 +147,6 @@
                         case RTAPIManagerRequestTypePost:
                             AXCallAPI(POST, requestId);
                             break;
-                        case RTAPIManagerRequestTypeRestGet:
-                            AXCallAPI(RestfulGET, requestId);
-                            break;
-                        case RTAPIManagerRequestTypeRestPost:
-                            AXCallAPI(RestfulPOST, requestId);
-                            break;
                         default:
                             break;
                     }

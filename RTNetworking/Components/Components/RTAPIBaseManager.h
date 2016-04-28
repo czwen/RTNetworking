@@ -218,8 +218,6 @@ typedef NS_ENUM (NSUInteger, RTAPIManagerErrorType){
 typedef NS_ENUM (NSUInteger, RTAPIManagerRequestType){
     RTAPIManagerRequestTypeGet,
     RTAPIManagerRequestTypePost,
-    RTAPIManagerRequestTypeRestGet,
-    RTAPIManagerRequestTypeRestPost
 };
 
 
