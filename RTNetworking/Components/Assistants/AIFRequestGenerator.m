@@ -78,7 +78,7 @@
     [sigParams addEntriesFromDictionary:commonParameters];
     allParams = sigParams;
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@", service.apiBaseUrl, service.apiVersion, methodName];
+    NSString *urlString = [[service.apiBaseUrl stringByAppendingPathComponent:service.apiVersion] stringByAppendingPathComponent:methodName];
     
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
     
