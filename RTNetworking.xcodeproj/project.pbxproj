@@ -67,6 +67,7 @@
 		3D3A89D01CD1CE9F00FCE445 /* AIFServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFServiceTest.h; sourceTree = "<group>"; };
 		3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFServiceTest.m; sourceTree = "<group>"; };
 		3D3A89D31CD1DD1800FCE445 /* AIFSignatureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureProtocol.h; sourceTree = "<group>"; };
+		3DB360331CD2097E00FBF41B /* FlexibleAIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlexibleAIFNetworking.h; sourceTree = "<group>"; };
 		4A00B5AD192EF1F2004C25C0 /* AIFApiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFApiProxy.h; sourceTree = "<group>"; };
 		4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFApiProxy.m; sourceTree = "<group>"; };
 		4A0516801928FB5C0025C4E1 /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAPIBaseManager.h; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 				4A54101D1918B88F0070C64C /* Services */,
 				4A5410241918CDC30070C64C /* AIFNetworking.h */,
 				4A5AE5601921CDA000E5DDAC /* AIFNetworkingConfiguration.h */,
+				3DB360331CD2097E00FBF41B /* FlexibleAIFNetworking.h */,
 			);
 			path = Components;
 			sourceTree = "<group>";
