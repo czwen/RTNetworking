@@ -68,9 +68,9 @@
 		3D3A89C41CD05E5300FCE445 /* TestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestManager.h; sourceTree = "<group>"; };
 		3D3A89C51CD05E5300FCE445 /* TestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestManager.m; sourceTree = "<group>"; };
 		3D3A89CB1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AIFNetworkingConfiguration.plist; sourceTree = "<group>"; };
-		3D3A89CD1CD1A76000FCE445 /* AIFSignatureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureProtocol.h; sourceTree = "<group>"; };
 		3D3A89D01CD1CE9F00FCE445 /* AIFServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFServiceTest.h; sourceTree = "<group>"; };
 		3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFServiceTest.m; sourceTree = "<group>"; };
+		3D3A89D31CD1DD1800FCE445 /* AIFSignatureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureProtocol.h; sourceTree = "<group>"; };
 		4A00B5AD192EF1F2004C25C0 /* AIFApiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFApiProxy.h; sourceTree = "<group>"; };
 		4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFApiProxy.m; sourceTree = "<group>"; };
 		4A0516761928FAF10025C4E1 /* AIFCityListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFCityListManager.h; sourceTree = "<group>"; };
@@ -170,13 +170,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D3A89C71CD0891E00FCE445 /* XShop */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = XShop;
-			sourceTree = "<group>";
-		};
 		4A0516751928FAF10025C4E1 /* LocationComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +218,7 @@
 		4A54101D1918B88F0070C64C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3D3A89C71CD0891E00FCE445 /* XShop */,
+				3D3A89D31CD1DD1800FCE445 /* AIFSignatureProtocol.h */,
 				4A5AE56419244C1500E5DDAC /* AIFService.h */,
 				4A5AE56519244C1500E5DDAC /* AIFService.m */,
 				4ADC85A9192086AF00217C4B /* AIFServiceFactory.h */,
@@ -264,7 +257,6 @@
 				4A54102B1918D7D90070C64C /* AIFCommonParamsGenerator.m */,
 				4A5AE5611923075300E5DDAC /* AIFRequestGenerator.h */,
 				4A5AE5621923075300E5DDAC /* AIFRequestGenerator.m */,
-				3D3A89CD1CD1A76000FCE445 /* AIFSignatureProtocol.h */,
 			);
 			path = Assistants;
 			sourceTree = "<group>";
