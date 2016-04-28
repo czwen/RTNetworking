@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3A89C61CD05E5300FCE445 /* TestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3A89C51CD05E5300FCE445 /* TestManager.m */; };
+		3D3A89CC1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D3A89CB1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist */; };
+		3D3A89D21CD1CE9F00FCE445 /* AIFServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */; };
 		4042907D7B104E208300D61A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75ADC2FB88145EC90EC652D /* libPods.a */; };
 		4A00B5AF192EF1F2004C25C0 /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */; };
 		4A05167D1928FAF20025C4E1 /* AIFCityListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0516771928FAF10025C4E1 /* AIFCityListManager.m */; };
@@ -19,12 +22,10 @@
 		4A54102F1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54102E1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m */; };
 		4A5410321918E02E0070C64C /* NSObject+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5410311918E02E0070C64C /* NSObject+AXNetworkingMethods.m */; };
 		4A5410391918E38E0070C64C /* AIFAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5410381918E38E0070C64C /* AIFAppContext.m */; };
-		4A5AE55E1921AFF700E5DDAC /* AIFSignatureGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AE55D1921AFF700E5DDAC /* AIFSignatureGenerator.m */; };
 		4A5AE5631923075300E5DDAC /* AIFRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AE5621923075300E5DDAC /* AIFRequestGenerator.m */; };
 		4A5AE56619244C1500E5DDAC /* AIFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AE56519244C1500E5DDAC /* AIFService.m */; };
 		4A6904C7191903BE00BA4622 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6904C5191903BE00BA4622 /* UIDevice+IdentifierAddition.m */; };
 		4A6904CA191903DF00BA4622 /* NSString+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6904C9191903DF00BA4622 /* NSString+AXNetworkingMethods.m */; };
-		4A95FC29193199BF0038C622 /* AIFServiceGoogleMapDirections.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95FC28193199BF0038C622 /* AIFServiceGoogleMapDirections.m */; };
 		4A95FC2B1931A2D20038C622 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A95FC2A1931A2D20038C622 /* MapKit.framework */; };
 		4A95FC2E1931A57D0038C622 /* UIView+HandyConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95FC2D1931A57D0038C622 /* UIView+HandyConstraints.m */; };
 		4AA8397D1928D56F0085CB3F /* AIFURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8397C1928D56F0085CB3F /* AIFURLResponse.m */; };
@@ -62,6 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A542FB78580823E7F6061F0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2D3EBB3AAA3682CAC931BFE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3D3A89C41CD05E5300FCE445 /* TestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestManager.h; sourceTree = "<group>"; };
+		3D3A89C51CD05E5300FCE445 /* TestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestManager.m; sourceTree = "<group>"; };
+		3D3A89CB1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AIFNetworkingConfiguration.plist; sourceTree = "<group>"; };
+		3D3A89CD1CD1A76000FCE445 /* AIFSignatureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureProtocol.h; sourceTree = "<group>"; };
+		3D3A89D01CD1CE9F00FCE445 /* AIFServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFServiceTest.h; sourceTree = "<group>"; };
+		3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFServiceTest.m; sourceTree = "<group>"; };
 		4A00B5AD192EF1F2004C25C0 /* AIFApiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFApiProxy.h; sourceTree = "<group>"; };
 		4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFApiProxy.m; sourceTree = "<group>"; };
 		4A0516761928FAF10025C4E1 /* AIFCityListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFCityListManager.h; sourceTree = "<group>"; };
@@ -85,8 +94,6 @@
 		4A5410311918E02E0070C64C /* NSObject+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AXNetworkingMethods.m"; sourceTree = "<group>"; };
 		4A5410371918E38E0070C64C /* AIFAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFAppContext.h; sourceTree = "<group>"; };
 		4A5410381918E38E0070C64C /* AIFAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFAppContext.m; sourceTree = "<group>"; };
-		4A5AE55C1921AFF700E5DDAC /* AIFSignatureGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureGenerator.h; sourceTree = "<group>"; };
-		4A5AE55D1921AFF700E5DDAC /* AIFSignatureGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFSignatureGenerator.m; sourceTree = "<group>"; };
 		4A5AE5601921CDA000E5DDAC /* AIFNetworkingConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIFNetworkingConfiguration.h; sourceTree = "<group>"; };
 		4A5AE5611923075300E5DDAC /* AIFRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFRequestGenerator.h; sourceTree = "<group>"; };
 		4A5AE5621923075300E5DDAC /* AIFRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFRequestGenerator.m; sourceTree = "<group>"; };
@@ -96,8 +103,6 @@
 		4A6904C6191903BE00BA4622 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		4A6904C8191903DF00BA4622 /* NSString+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AXNetworkingMethods.h"; sourceTree = "<group>"; };
 		4A6904C9191903DF00BA4622 /* NSString+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AXNetworkingMethods.m"; sourceTree = "<group>"; };
-		4A95FC27193199BF0038C622 /* AIFServiceGoogleMapDirections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFServiceGoogleMapDirections.h; sourceTree = "<group>"; };
-		4A95FC28193199BF0038C622 /* AIFServiceGoogleMapDirections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFServiceGoogleMapDirections.m; sourceTree = "<group>"; };
 		4A95FC2A1931A2D20038C622 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4A95FC2C1931A57D0038C622 /* UIView+HandyConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HandyConstraints.h"; sourceTree = "<group>"; };
 		4A95FC2D1931A57D0038C622 /* UIView+HandyConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HandyConstraints.m"; sourceTree = "<group>"; };
@@ -136,7 +141,6 @@
 		4AF9117B19226AD300310140 /* NSArray+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AXNetworkingMethods.m"; sourceTree = "<group>"; };
 		4AF9117D19226E0D00310140 /* AIFUDIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFUDIDGenerator.h; sourceTree = "<group>"; };
 		4AF9117E19226E0D00310140 /* AIFUDIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFUDIDGenerator.m; sourceTree = "<group>"; };
-		D983044406FF4C28AF6AC19F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F75ADC2FB88145EC90EC652D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D3A89C71CD0891E00FCE445 /* XShop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XShop;
+			sourceTree = "<group>";
+		};
 		4A0516751928FAF10025C4E1 /* LocationComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +225,7 @@
 		4A54101D1918B88F0070C64C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4A95FC261931999E0038C622 /* GoogleMap */,
+				3D3A89C71CD0891E00FCE445 /* XShop */,
 				4A5AE56419244C1500E5DDAC /* AIFService.h */,
 				4A5AE56519244C1500E5DDAC /* AIFService.m */,
 				4ADC85A9192086AF00217C4B /* AIFServiceFactory.h */,
@@ -251,10 +262,9 @@
 				4AF9117E19226E0D00310140 /* AIFUDIDGenerator.m */,
 				4A54102A1918D7D90070C64C /* AIFCommonParamsGenerator.h */,
 				4A54102B1918D7D90070C64C /* AIFCommonParamsGenerator.m */,
-				4A5AE55C1921AFF700E5DDAC /* AIFSignatureGenerator.h */,
-				4A5AE55D1921AFF700E5DDAC /* AIFSignatureGenerator.m */,
 				4A5AE5611923075300E5DDAC /* AIFRequestGenerator.h */,
 				4A5AE5621923075300E5DDAC /* AIFRequestGenerator.m */,
+				3D3A89CD1CD1A76000FCE445 /* AIFSignatureProtocol.h */,
 			);
 			path = Assistants;
 			sourceTree = "<group>";
@@ -277,15 +287,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		4A95FC261931999E0038C622 /* GoogleMap */ = {
-			isa = PBXGroup;
-			children = (
-				4A95FC27193199BF0038C622 /* AIFServiceGoogleMapDirections.h */,
-				4A95FC28193199BF0038C622 /* AIFServiceGoogleMapDirections.m */,
-			);
-			path = GoogleMap;
-			sourceTree = "<group>";
-		};
 		4ABAA3531932ED95007C99EC /* CacheComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +305,7 @@
 				4AD82A011918B581001A90DF /* RTNetworkingTests */,
 				4AD829DB1918B581001A90DF /* Frameworks */,
 				4AD829DA1918B581001A90DF /* Products */,
-				D983044406FF4C28AF6AC19F /* Pods.xcconfig */,
+				7D87F4A455E50FCE947B84B8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,6 +344,10 @@
 				4A95FC2D1931A57D0038C622 /* UIView+HandyConstraints.m */,
 				4AD829F41918B581001A90DF /* Images.xcassets */,
 				4AD829E31918B581001A90DF /* Supporting Files */,
+				3D3A89C41CD05E5300FCE445 /* TestManager.h */,
+				3D3A89C51CD05E5300FCE445 /* TestManager.m */,
+				3D3A89D01CD1CE9F00FCE445 /* AIFServiceTest.h */,
+				3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */,
 			);
 			path = RTNetworking;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				4AD829E51918B581001A90DF /* InfoPlist.strings */,
 				4AD829E81918B581001A90DF /* main.m */,
 				4AD829EA1918B581001A90DF /* RTNetworking-Prefix.pch */,
+				3D3A89CB1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -376,6 +382,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7D87F4A455E50FCE947B84B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D3EBB3AAA3682CAC931BFE5 /* Pods.debug.xcconfig */,
+				0A542FB78580823E7F6061F0 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +403,7 @@
 				4AD829D61918B581001A90DF /* Frameworks */,
 				4AD829D71918B581001A90DF /* Resources */,
 				C089BCCEDD6E449BA621228C /* Copy Pods Resources */,
+				A0F6FF4E358150C2DEFD0FC4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -454,6 +470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D3A89CC1CD0BE0A00FCE445 /* AIFNetworkingConfiguration.plist in Resources */,
 				4AD829F51918B581001A90DF /* Images.xcassets in Resources */,
 				4AD829E71918B581001A90DF /* InfoPlist.strings in Resources */,
 				4AD829F01918B581001A90DF /* Main.storyboard in Resources */,
@@ -471,6 +488,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A0F6FF4E358150C2DEFD0FC4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C089BCCEDD6E449BA621228C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,7 +515,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5E710E5B3EB4BA99E026ED1 /* Check Pods Manifest.lock */ = {
@@ -512,15 +544,15 @@
 				4A5AE5631923075300E5DDAC /* AIFRequestGenerator.m in Sources */,
 				4A6904CA191903DF00BA4622 /* NSString+AXNetworkingMethods.m in Sources */,
 				4AF9117F19226E0D00310140 /* AIFUDIDGenerator.m in Sources */,
+				3D3A89D21CD1CE9F00FCE445 /* AIFServiceTest.m in Sources */,
 				4ABAA3561932EDB5007C99EC /* AIFCachedObject.m in Sources */,
 				4A5410321918E02E0070C64C /* NSObject+AXNetworkingMethods.m in Sources */,
 				4ABAA35C19330E0E007C99EC /* NSURLRequest+AIFNetworkingMethods.m in Sources */,
 				4A54102F1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m in Sources */,
 				4AA8397D1928D56F0085CB3F /* AIFURLResponse.m in Sources */,
-				4A5AE55E1921AFF700E5DDAC /* AIFSignatureGenerator.m in Sources */,
+				3D3A89C61CD05E5300FCE445 /* TestManager.m in Sources */,
 				4A5AE56619244C1500E5DDAC /* AIFService.m in Sources */,
 				4AD829F31918B581001A90DF /* ViewController.m in Sources */,
-				4A95FC29193199BF0038C622 /* AIFServiceGoogleMapDirections.m in Sources */,
 				4AF9117C19226AD300310140 /* NSArray+AXNetworkingMethods.m in Sources */,
 				4A0516821928FB5C0025C4E1 /* RTAPIBaseManager.m in Sources */,
 				4A00B5AF192EF1F2004C25C0 /* AIFApiProxy.m in Sources */,
@@ -658,7 +690,7 @@
 		};
 		4AD82A0C1918B581001A90DF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D983044406FF4C28AF6AC19F /* Pods.xcconfig */;
+			baseConfigurationReference = 2D3EBB3AAA3682CAC931BFE5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -673,7 +705,7 @@
 		};
 		4AD82A0D1918B581001A90DF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D983044406FF4C28AF6AC19F /* Pods.xcconfig */;
+			baseConfigurationReference = 0A542FB78580823E7F6061F0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

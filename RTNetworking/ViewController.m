@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "AIFNetworking.h"
+#import "TestManager.h"
 
-@interface ViewController ()
-
+@interface ViewController ()<RTAPIManagerApiCallBackDelegate,RTAPIManagerParamSourceDelegate>
+@property (nonatomic, strong) TestManager *testManager;
 @end
 
 @implementation ViewController
@@ -19,11 +21,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.testManager loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 }
+
+- (TestManager *)testManager
+{
+    if (!_testManager) {
+        _testManager = [[TestManager alloc]init];
+        _testManager.delegate = self;
+        _testManager.paramSource = self;
+    }
+    return _testManager;
+}
+
+
+- (NSDictionary *)paramsForApi:(RTAPIBaseManager *)manager
+{
+    return @{
+            @"phone": @"13688893496",
+            };
+}
+
+- (void)managerCallAPIDidSuccess:(RTAPIBaseManager *)manager
+{
+    NSDictionary *dic = [manager fetchDataWithReformer:nil];
+    
+}
+
+- (void)managerCallAPIDidFailed:(RTAPIBaseManager *)manager
+{
+    
+}
+
 
 @end
