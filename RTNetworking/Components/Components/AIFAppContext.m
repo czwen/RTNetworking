@@ -10,7 +10,6 @@
 #import "NSObject+AXNetworkingMethods.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "AFNetworkReachabilityManager.h"
-#import "AIFLocationManager.h"
 #import "AIFLogger.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
@@ -152,10 +151,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
     return [formatter stringFromDate:[NSDate date]];
 }
 
-- (NSString *)cid
-{
-    return [[AIFLocationManager sharedInstance] currentCityId];
-}
 
 - (void)setCurrentPageNumber:(NSString *)currentPageNumber
 {
@@ -267,17 +262,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
     return self.macid;
 }
 
-- (NSString *)geo
-{
-    CLLocationCoordinate2D coordinate = [[AIFLocationManager sharedInstance].locatedCityLocation coordinate];
-    return [NSString stringWithFormat:@"%f, %f", coordinate.latitude, coordinate.longitude];
-}
-
-- (NSString *)gcid
-{
-    return [AIFLocationManager sharedInstance].locatedCityId;
-}
-
 - (NSString *)p
 {
     if (_p == nil) {
@@ -366,7 +350,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
     dispatch_once(&onceToken, ^{
         sharedInstance = [[AIFAppContext alloc] init];
         [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-        [AIFLocationManager sharedInstance];
     });
     return sharedInstance;
 }

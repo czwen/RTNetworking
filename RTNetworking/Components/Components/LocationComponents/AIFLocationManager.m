@@ -422,7 +422,16 @@ NSString * const AJKHDLocationManagerDidSwitchCityNotification = @"AJKHDLocation
         }
     }
 }
+#pragma mark
+#pragma mark - RTAPIManager
+- (RTAPIManagerRequestType)requestType{
+    return RTAPIManagerRequestTypeGet;
+}
 
+- (NSString *)serviceType
+{
+    return nil;
+}
 #pragma mark - RTAPIManagerValidator
 - (BOOL)manager:(RTAPIBaseManager *)manager isCorrectWithCallBackData:(NSDictionary *)data
 {

@@ -8,7 +8,6 @@
 
 #import "AIFRequestGenerator.h"
 #import "AIFServiceFactory.h"
-#import "AIFCommonParamsGenerator.h"
 #import "NSDictionary+AXNetworkingMethods.h"
 #import "AIFNetworkingConfiguration.h"
 #import "NSObject+AXNetworkingMethods.h"

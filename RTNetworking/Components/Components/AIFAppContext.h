@@ -17,7 +17,6 @@
 @property (nonatomic, copy) NSString *appName;      //应用名称
 @property (nonatomic, assign) AIFAppType appType;
 
-@property (nonatomic, copy, readonly) NSString *cid;          //城市id
 @property (nonatomic, copy, readonly) NSString *m;            //设备名称
 @property (nonatomic, copy, readonly) NSString *o;            //系统名称
 @property (nonatomic, copy, readonly) NSString *v;            //系统版本
@@ -39,12 +38,10 @@
 @property (nonatomic, copy) NSString *chatid; //登录用户chat id
 @property (nonatomic, copy) NSString *ccid; // 用户选择的城市id
 
-@property (nonatomic, copy, readonly) NSString *gcid; // 用户当前所在城市的id
 @property (nonatomic, copy, readonly) NSString *bp;         //上一个页面的pageNumber,记log用
 @property (nonatomic, copy, readonly) NSString *guid;
 @property (nonatomic, copy, readonly) NSString *net;
 @property (nonatomic, copy, readonly) NSString *ip;
-@property (nonatomic, copy, readonly) NSString *geo;
 @property (nonatomic, copy, readonly) NSString *ver; // log 版本
 @property (nonatomic, copy, readonly) NSString *dvid;
 @property (nonatomic, copy, readonly) NSString *mac;

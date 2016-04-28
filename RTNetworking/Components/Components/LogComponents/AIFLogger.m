@@ -9,7 +9,6 @@
 #import "AIFLogger.h"
 #import "NSObject+AXNetworkingMethods.h"
 #import "NSMutableString+AXNetworkingMethods.h"
-#import "AIFCommonParamsGenerator.h"
 #import "AIFAppContext.h"
 #import "NSArray+AXNetworkingMethods.h"
 #import "AIFApiProxy.h"
@@ -124,7 +123,7 @@
     NSMutableDictionary *actionDict = [[NSMutableDictionary alloc] init];
     actionDict[@"act"] = actionCode;
     [actionDict addEntriesFromDictionary:params];
-    [actionDict addEntriesFromDictionary:[AIFCommonParamsGenerator commonParamsDictionaryForLog]];
+//    [actionDict addEntriesFromDictionary:[AIFCommonParamsGenerator commonParamsDictionaryForLog]];
     NSDictionary *logJsonDict = @{self.configParams.sendActionKey:[@[actionDict] AX_jsonString]};
     [[AIFApiProxy sharedInstance] callPOSTWithParams:logJsonDict serviceIdentifier:self.configParams.serviceType methodName:self.configParams.sendActionMethod success:nil fail:nil];
 }

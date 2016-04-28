@@ -12,13 +12,9 @@
 		3D3A89D21CD1CE9F00FCE445 /* AIFServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3A89D11CD1CE9F00FCE445 /* AIFServiceTest.m */; };
 		4042907D7B104E208300D61A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75ADC2FB88145EC90EC652D /* libPods.a */; };
 		4A00B5AF192EF1F2004C25C0 /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */; };
-		4A05167D1928FAF20025C4E1 /* AIFCityListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0516771928FAF10025C4E1 /* AIFCityListManager.m */; };
-		4A05167E1928FAF20025C4E1 /* AIFLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0516791928FAF10025C4E1 /* AIFLocationManager.m */; };
-		4A05167F1928FAF20025C4E1 /* AIFPListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A05167C1928FAF20025C4E1 /* AIFPListManager.m */; };
 		4A0516821928FB5C0025C4E1 /* RTAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0516811928FB5C0025C4E1 /* RTAPIBaseManager.m */; };
 		4A165E00192A045D00CCC80F /* AIFLoggerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A165DFD192A045D00CCC80F /* AIFLoggerConfiguration.m */; };
 		4A165E01192A045D00CCC80F /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A165DFF192A045D00CCC80F /* AIFLogger.m */; };
-		4A54102C1918D7D90070C64C /* AIFCommonParamsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54102B1918D7D90070C64C /* AIFCommonParamsGenerator.m */; };
 		4A54102F1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54102E1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m */; };
 		4A5410321918E02E0070C64C /* NSObject+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5410311918E02E0070C64C /* NSObject+AXNetworkingMethods.m */; };
 		4A5410391918E38E0070C64C /* AIFAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5410381918E38E0070C64C /* AIFAppContext.m */; };
@@ -73,12 +69,6 @@
 		3D3A89D31CD1DD1800FCE445 /* AIFSignatureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFSignatureProtocol.h; sourceTree = "<group>"; };
 		4A00B5AD192EF1F2004C25C0 /* AIFApiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFApiProxy.h; sourceTree = "<group>"; };
 		4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFApiProxy.m; sourceTree = "<group>"; };
-		4A0516761928FAF10025C4E1 /* AIFCityListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFCityListManager.h; sourceTree = "<group>"; };
-		4A0516771928FAF10025C4E1 /* AIFCityListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFCityListManager.m; sourceTree = "<group>"; };
-		4A0516781928FAF10025C4E1 /* AIFLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFLocationManager.h; sourceTree = "<group>"; };
-		4A0516791928FAF10025C4E1 /* AIFLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFLocationManager.m; sourceTree = "<group>"; };
-		4A05167B1928FAF10025C4E1 /* AIFPListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFPListManager.h; sourceTree = "<group>"; };
-		4A05167C1928FAF20025C4E1 /* AIFPListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFPListManager.m; sourceTree = "<group>"; };
 		4A0516801928FB5C0025C4E1 /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAPIBaseManager.h; sourceTree = "<group>"; };
 		4A0516811928FB5C0025C4E1 /* RTAPIBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAPIBaseManager.m; sourceTree = "<group>"; };
 		4A165DFC192A045D00CCC80F /* AIFLoggerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFLoggerConfiguration.h; sourceTree = "<group>"; };
@@ -86,8 +76,6 @@
 		4A165DFE192A045D00CCC80F /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFLogger.h; sourceTree = "<group>"; };
 		4A165DFF192A045D00CCC80F /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFLogger.m; sourceTree = "<group>"; };
 		4A5410241918CDC30070C64C /* AIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIFNetworking.h; sourceTree = "<group>"; };
-		4A54102A1918D7D90070C64C /* AIFCommonParamsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFCommonParamsGenerator.h; sourceTree = "<group>"; };
-		4A54102B1918D7D90070C64C /* AIFCommonParamsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFCommonParamsGenerator.m; sourceTree = "<group>"; };
 		4A54102D1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AXNetworkingMethods.h"; sourceTree = "<group>"; };
 		4A54102E1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AXNetworkingMethods.m"; sourceTree = "<group>"; };
 		4A5410301918E02E0070C64C /* NSObject+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AXNetworkingMethods.h"; sourceTree = "<group>"; };
@@ -170,27 +158,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A0516751928FAF10025C4E1 /* LocationComponents */ = {
-			isa = PBXGroup;
-			children = (
-				4A05167A1928FAF10025C4E1 /* PlistManager */,
-				4A0516761928FAF10025C4E1 /* AIFCityListManager.h */,
-				4A0516771928FAF10025C4E1 /* AIFCityListManager.m */,
-				4A0516781928FAF10025C4E1 /* AIFLocationManager.h */,
-				4A0516791928FAF10025C4E1 /* AIFLocationManager.m */,
-			);
-			path = LocationComponents;
-			sourceTree = "<group>";
-		};
-		4A05167A1928FAF10025C4E1 /* PlistManager */ = {
-			isa = PBXGroup;
-			children = (
-				4A05167B1928FAF10025C4E1 /* AIFPListManager.h */,
-				4A05167C1928FAF20025C4E1 /* AIFPListManager.m */,
-			);
-			path = PlistManager;
-			sourceTree = "<group>";
-		};
 		4A165DFB192A045D00CCC80F /* LogComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,8 +220,6 @@
 			children = (
 				4AF9117D19226E0D00310140 /* AIFUDIDGenerator.h */,
 				4AF9117E19226E0D00310140 /* AIFUDIDGenerator.m */,
-				4A54102A1918D7D90070C64C /* AIFCommonParamsGenerator.h */,
-				4A54102B1918D7D90070C64C /* AIFCommonParamsGenerator.m */,
 				4A5AE5611923075300E5DDAC /* AIFRequestGenerator.h */,
 				4A5AE5621923075300E5DDAC /* AIFRequestGenerator.m */,
 			);
@@ -265,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				4A165DFB192A045D00CCC80F /* LogComponents */,
-				4A0516751928FAF10025C4E1 /* LocationComponents */,
 				4ABAA3531932ED95007C99EC /* CacheComponents */,
 				4A5410371918E38E0070C64C /* AIFAppContext.h */,
 				4A5410381918E38E0070C64C /* AIFAppContext.m */,
@@ -549,15 +513,11 @@
 				4A0516821928FB5C0025C4E1 /* RTAPIBaseManager.m in Sources */,
 				4A00B5AF192EF1F2004C25C0 /* AIFApiProxy.m in Sources */,
 				4AB27CBD1927B11600C7ADFA /* NSMutableString+AXNetworkingMethods.m in Sources */,
-				4A05167D1928FAF20025C4E1 /* AIFCityListManager.m in Sources */,
 				4AD829ED1918B581001A90DF /* AppDelegate.m in Sources */,
-				4A05167E1928FAF20025C4E1 /* AIFLocationManager.m in Sources */,
 				4A6904C7191903BE00BA4622 /* UIDevice+IdentifierAddition.m in Sources */,
 				4ABAA3591932EDEA007C99EC /* AIFCache.m in Sources */,
 				4A165E01192A045D00CCC80F /* AIFLogger.m in Sources */,
-				4A05167F1928FAF20025C4E1 /* AIFPListManager.m in Sources */,
 				4AD829E91918B581001A90DF /* main.m in Sources */,
-				4A54102C1918D7D90070C64C /* AIFCommonParamsGenerator.m in Sources */,
 				4A5410391918E38E0070C64C /* AIFAppContext.m in Sources */,
 				4A165E00192A045D00CCC80F /* AIFLoggerConfiguration.m in Sources */,
 				4ADC85AB192086AF00217C4B /* AIFServiceFactory.m in Sources */,

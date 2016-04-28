@@ -3,6 +3,8 @@ Pod::Spec.new do |s|
 
   s.version  = "1.0"
 
+  s.license = "MIT"
+
   s.summary  = "Anjuke iOS Framework: Networking, flexible by Ryan"
 
   s.author = { "ChenZhiWen" => "czwen1993@gmail.com" }
@@ -26,7 +28,6 @@ Pod::Spec.new do |s|
   			"RTNetworking/Components/Services/*.{h,m}",
   			"RTNetworking/Components/Components/LogComponents/*.{h,m}",
   			"RTNetworking/Components/Components/CacheComponents/*.{h,m}",
-  			"RTNetworking/Components/Components/LocationComponents/**/*.{h,m}"
 
 
 
