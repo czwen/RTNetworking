@@ -9,6 +9,8 @@ Pod::Spec.new do |s|
 
   s.source   = { :git => "https://github.com/czwen/RTNetworking.git" }
 
+  s.homepage = "https://github.com/czwen/RTNetworking"
+
   s.requires_arc = true
 
   s.ios.deployment_target = "7.0"
@@ -36,9 +38,10 @@ Pod::Spec.new do |s|
 #    end
 #  end
 
-  s.subspec "Services" do |ss|
-    ss.source_files = "RTNetworking/Components/Services/*.{h,m}",
-    		        "RTNetworking/Components/Categories/*.{h,m}"
-  end
+#  s.subspec "Services" do |ss|
+#    ss.source_files = "RTNetworking/Components/Services/*.{h,m}",
+#		        "RTNetworking/Components/Assistants/*.{h,m}",
+#    		        "RTNetworking/Components/Categories/*.{h,m}"
+#  end
 
 end
