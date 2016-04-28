@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 anjuke. All rights reserved.
 //
 
-#import "AIFAppContext.h"
 
 #ifndef AIFNetworking_AIFNetworkingConfiguration_h
 #define AIFNetworking_AIFNetworkingConfiguration_h

@@ -18,6 +18,9 @@
         if ([self conformsToProtocol:@protocol(AIFServiceProtocal)]) {
             self.child = (id<AIFServiceProtocal>)self;
         }
+        if ([self conformsToProtocol:@protocol(AIFSignatureProtocol)]) {
+            self.signature = (id<AIFSignatureProtocol>)self;
+        }
     }
     return self;
 }
@@ -28,8 +31,17 @@
     return self.child.isOnline ? self.child.onlinePrivateKey : self.child.offlinePrivateKey;
 }
 
-- (NSString *)publicKey
+- (NSDictionary *)publicKey
 {
+    /*************
+     *  example  *
+     *************
+     
+     @{
+        @"app_key":@"publicKey"
+     }
+     
+     */
     return self.child.isOnline ? self.child.onlinePublicKey : self.child.offlinePublicKey;
 }
 
@@ -43,4 +55,18 @@
     return self.child.isOnline ? self.child.onlineApiVersion : self.child.offlineApiVersion;
 }
 
+- (BOOL)isSingtureAllParamters
+{
+    return self.child.isOnline ? self.child.onlineIsSingtureAllParamters : self.child.offlineIsSingtureAllParamters;
+}
+
+- (NSDictionary *)headersDictionary
+{
+    return self.child.serviceHeadersDictionary;
+}
+
+- (NSDictionary *)commonParamsDictionary
+{
+    return self.child.serviceCommonParamsDictionary;
+}
 @end
