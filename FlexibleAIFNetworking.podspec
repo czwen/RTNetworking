@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
-  s.name     = "AIFNetworking-flexible"
+  s.name     = "FlexibleAIFNetworking"
 
   s.version  = "1.0"
 
-  s.license = "MIT"
+  s.license = { :type => "MIT" }
 
   s.summary  = "Anjuke iOS Framework: Networking, flexible by Ryan"
 
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   			"RTNetworking/Components/Components/*.{h,m}",
   			"RTNetworking/Components/Services/*.{h,m}",
   			"RTNetworking/Components/Components/LogComponents/*.{h,m}",
-  			"RTNetworking/Components/Components/CacheComponents/*.{h,m}",
+  			"RTNetworking/Components/Components/CacheComponents/*.{h,m}"
 
 
 
