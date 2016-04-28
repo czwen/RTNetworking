@@ -121,7 +121,7 @@ NSString * const AJKHDLocationManagerDidSwitchCityNotification = @"AJKHDLocation
         self.locationStatus = AJKHDLocationManagerLocationServiceStatusDefault;
         
         _methodName = @"_methodName";
-        _serviceType = kAIFServiceAnjuke;
+//        _serviceType = kAIFServiceAnjuke;
         
         self.delegate = self;
         self.paramSource = self;
