@@ -10,7 +10,7 @@
 #import "NSObject+AXNetworkingMethods.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "AFNetworkReachabilityManager.h"
-//#import "AIFLocationManager.h"
+#import "AIFLocationManager.h"
 #import "AIFLogger.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
