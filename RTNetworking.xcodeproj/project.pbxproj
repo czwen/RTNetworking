@@ -13,7 +13,6 @@
 		4042907D7B104E208300D61A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75ADC2FB88145EC90EC652D /* libPods.a */; };
 		4A00B5AF192EF1F2004C25C0 /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */; };
 		4A0516821928FB5C0025C4E1 /* RTAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0516811928FB5C0025C4E1 /* RTAPIBaseManager.m */; };
-		4A165E00192A045D00CCC80F /* AIFLoggerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A165DFD192A045D00CCC80F /* AIFLoggerConfiguration.m */; };
 		4A165E01192A045D00CCC80F /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A165DFF192A045D00CCC80F /* AIFLogger.m */; };
 		4A54102F1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54102E1918D94C0070C64C /* NSDictionary+AXNetworkingMethods.m */; };
 		4A5410321918E02E0070C64C /* NSObject+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5410311918E02E0070C64C /* NSObject+AXNetworkingMethods.m */; };
@@ -72,8 +71,6 @@
 		4A00B5AE192EF1F2004C25C0 /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFApiProxy.m; sourceTree = "<group>"; };
 		4A0516801928FB5C0025C4E1 /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAPIBaseManager.h; sourceTree = "<group>"; };
 		4A0516811928FB5C0025C4E1 /* RTAPIBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAPIBaseManager.m; sourceTree = "<group>"; };
-		4A165DFC192A045D00CCC80F /* AIFLoggerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFLoggerConfiguration.h; sourceTree = "<group>"; };
-		4A165DFD192A045D00CCC80F /* AIFLoggerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFLoggerConfiguration.m; sourceTree = "<group>"; };
 		4A165DFE192A045D00CCC80F /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFLogger.h; sourceTree = "<group>"; };
 		4A165DFF192A045D00CCC80F /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFLogger.m; sourceTree = "<group>"; };
 		4A5410241918CDC30070C64C /* AIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIFNetworking.h; sourceTree = "<group>"; };
@@ -162,8 +159,6 @@
 		4A165DFB192A045D00CCC80F /* LogComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4A165DFC192A045D00CCC80F /* AIFLoggerConfiguration.h */,
-				4A165DFD192A045D00CCC80F /* AIFLoggerConfiguration.m */,
 				4A165DFE192A045D00CCC80F /* AIFLogger.h */,
 				4A165DFF192A045D00CCC80F /* AIFLogger.m */,
 			);
@@ -521,7 +516,6 @@
 				4A165E01192A045D00CCC80F /* AIFLogger.m in Sources */,
 				4AD829E91918B581001A90DF /* main.m in Sources */,
 				4A5410391918E38E0070C64C /* AIFAppContext.m in Sources */,
-				4A165E00192A045D00CCC80F /* AIFLoggerConfiguration.m in Sources */,
 				4ADC85AB192086AF00217C4B /* AIFServiceFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,7 +15,6 @@
 
 @property (nonatomic, copy) NSString *channelID;    //渠道号
 @property (nonatomic, copy) NSString *appName;      //应用名称
-@property (nonatomic, assign) AIFAppType appType;
 
 @property (nonatomic, copy, readonly) NSString *m;            //设备名称
 @property (nonatomic, copy, readonly) NSString *o;            //系统名称
@@ -59,6 +58,5 @@
 @property (nonatomic, copy, readonly) NSString *pasteboardType;
 
 + (instancetype)sharedInstance;
-- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appType:(AIFAppType)appType ccid:(NSString *)ccid;
 
 @end

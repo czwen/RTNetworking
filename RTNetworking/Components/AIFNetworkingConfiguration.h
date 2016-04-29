@@ -10,14 +10,6 @@
 #ifndef AIFNetworking_AIFNetworkingConfiguration_h
 #define AIFNetworking_AIFNetworkingConfiguration_h
 
-typedef NS_ENUM(NSInteger, AIFAppType) {
-    AIFAppTypeAnjuke,
-    AIFAppTypeBroker,
-    AIFAppTypeAifang,
-    AIFAppTypeErShouFang,
-    AIFAppTypeHaozu
-};
-
 typedef NS_ENUM(NSUInteger, AIFURLResponseStatus)
 {
     AIFURLResponseStatusSuccess, //作为底层，请求是否成功只考虑是否成功收到服务器反馈。至于签名是否正确，返回的数据是否完整，由上层的RTApiBaseManager来决定。

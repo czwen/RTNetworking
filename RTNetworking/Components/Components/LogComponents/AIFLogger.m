@@ -16,8 +16,6 @@
 
 @interface AIFLogger ()
 
-@property (nonatomic, strong, readwrite) AIFLoggerConfiguration *configParams;
-
 @end
 
 @implementation AIFLogger
@@ -111,21 +109,8 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        self.configParams = [[AIFLoggerConfiguration alloc] init];
-        [self.configParams configWithAppType:[AIFAppContext sharedInstance].appType];
-    }
+    
     return self;
-}
-
-- (void)logWithActionCode:(NSString *)actionCode params:(NSDictionary *)params
-{
-    NSMutableDictionary *actionDict = [[NSMutableDictionary alloc] init];
-    actionDict[@"act"] = actionCode;
-    [actionDict addEntriesFromDictionary:params];
-//    [actionDict addEntriesFromDictionary:[AIFCommonParamsGenerator commonParamsDictionaryForLog]];
-    NSDictionary *logJsonDict = @{self.configParams.sendActionKey:[@[actionDict] AX_jsonString]};
-    [[AIFApiProxy sharedInstance] callPOSTWithParams:logJsonDict serviceIdentifier:self.configParams.serviceType methodName:self.configParams.sendActionMethod success:nil fail:nil];
 }
 
 @end

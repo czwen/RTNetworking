@@ -354,15 +354,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
     return sharedInstance;
 }
 
-- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appType:(AIFAppType)appType ccid:(NSString *)ccid
-{
-    self.channelID = channelID;
-    self.appName = appName;
-    self.appType = appType;
-    self.ccid = ccid;
-    [[AIFLogger sharedInstance].configParams configWithAppType:appType];
-}
-
 #pragma mark - overrided methods
 - (instancetype)init
 {
