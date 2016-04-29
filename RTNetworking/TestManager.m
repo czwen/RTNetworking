@@ -39,4 +39,5 @@
 - (BOOL)manager:(RTAPIBaseManager *)manager isCorrectWithCallBackData:(NSDictionary *)data{
     return YES;
 }
+
 @end

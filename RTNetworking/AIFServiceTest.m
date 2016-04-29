@@ -7,6 +7,7 @@
 //
 
 #import "AIFServiceTest.h"
+#import "AIFAppContext.h"
 
 @interface AIFServiceTest()
 @end
@@ -82,8 +83,29 @@
 
 - (NSDictionary *)serviceCommonParamsDictionary
 {
+    NSLog([@{
+            @"appName":[AIFAppContext sharedInstance].appName,
+            @"deviceName":[AIFAppContext sharedInstance].deviceName,
+            @"osName":[AIFAppContext sharedInstance].osName,
+            @"osVersion":[AIFAppContext sharedInstance].osVersion,
+            @"channelID":[AIFAppContext sharedInstance].channelID,
+            @"appVersion":[AIFAppContext sharedInstance].appVersion,
+            @"requestTime":[AIFAppContext sharedInstance].requestTime,
+            @"net":[AIFAppContext sharedInstance].net,
+            @"bundleID":[AIFAppContext sharedInstance].bundleID,
+            @"ip":[AIFAppContext sharedInstance].ip,
+            } description]);
     return @{
-             @"api":@"api"
+             @"appName":[AIFAppContext sharedInstance].appName,
+             @"deviceName":[AIFAppContext sharedInstance].deviceName,
+             @"osName":[AIFAppContext sharedInstance].osName,
+             @"osVersion":[AIFAppContext sharedInstance].osVersion,
+             @"channelID":[AIFAppContext sharedInstance].channelID,
+             @"appVersion":[AIFAppContext sharedInstance].appVersion,
+             @"requestTime":[AIFAppContext sharedInstance].requestTime,
+             @"net":[AIFAppContext sharedInstance].net,
+             @"bundleID":[AIFAppContext sharedInstance].bundleID,
+             @"ip":[AIFAppContext sharedInstance].ip,
              };
 }
 

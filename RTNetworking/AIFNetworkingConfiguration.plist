@@ -8,5 +8,7 @@
 	<string></string>
 	<key>AIFPasteboardType</key>
 	<string></string>
+	<key>ChannelID</key>
+	<string>AppStore</string>
 </dict>
 </plist>

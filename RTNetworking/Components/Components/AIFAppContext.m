@@ -17,27 +17,26 @@
 static NSString *kAIFKeychainServiceName = @"AIFKeychainServiceName";
 static NSString *kAIFUDIDName = @"AIFUDIDName";
 static NSString *kAIFPasteboardType = @"AIFPasteboardType";
+static NSString *kChannelID = @"ChannelID";
 
 @interface AIFAppContext ()
 @property (nonatomic, strong) NSDictionary *plist;
 @property (nonatomic, strong) UIDevice *device;
-@property (nonatomic, copy, readwrite) NSString *m;
-@property (nonatomic, copy, readwrite) NSString *guid;
-@property (nonatomic, copy, readwrite) NSString *net;
+
+
+@property (nonatomic, copy, readwrite) NSString *appName;                //应用名称
+@property (nonatomic, copy, readwrite) NSString *deviceName;             //设备名称
+@property (nonatomic, copy, readwrite) NSString *osName;                 //系统名称
+@property (nonatomic, copy, readwrite) NSString *osVersion;              //系统版本
+@property (nonatomic, copy, readwrite) NSString *channelID;              //渠道号
+@property (nonatomic, copy, readwrite) NSString *appVersion;             //Bundle版本
+@property (nonatomic, copy, readwrite) NSString *requestTime;            //发送请求的时间
+@property (nonatomic, copy, readwrite) NSString *net;                    //请求网络
+@property (nonatomic, copy, readwrite) NSString *bundleID;
 @property (nonatomic, copy, readwrite) NSString *ip;
-@property (nonatomic, copy, readwrite) NSString *o;
-@property (nonatomic, copy, readwrite) NSString *v;
-@property (nonatomic, copy, readwrite) NSString *cv;
-@property (nonatomic, copy, readwrite) NSString *macid;
-@property (nonatomic, copy, readwrite) NSString *uuid;
-@property (nonatomic, copy, readwrite) NSString *udid2;
-@property (nonatomic, copy, readwrite) NSString *from;
-@property (nonatomic, copy, readwrite) NSString *ostype2;
-@property (nonatomic, copy, readwrite) NSString *uuid2;
-@property (nonatomic, copy, readwrite) NSString *bp;
-@property (nonatomic, copy, readwrite) NSString *p;
-@property (nonatomic, copy, readwrite) NSString *ct;
-@property (nonatomic, copy, readwrite) NSString *pmodel;
+
+@property (nonatomic, readwrite) BOOL isReachable;
+
 
 @property (nonatomic, copy, readwrite) NSString *keychainServiceName;
 @property (nonatomic, copy, readwrite) NSString *udidName;
@@ -55,177 +54,73 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
     return _device;
 }
 
-- (NSString *)m
+- (NSString *)deviceName
 {
-    if (_m == nil) {
-        _m = [[self.device.model stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] AIF_defaultValue:@""];
+    if (_deviceName == nil) {
+        _deviceName = [[self.device.localizedModel stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] AIF_defaultValue:@""];
     }
-    return _m;
+    return _deviceName;
 }
 
-- (NSString *)o
+- (NSString *)osName
 {
-    if (_o == nil) {
-        _o = [[self.device.systemName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] AIF_defaultValue:@""];
+    if (_osName == nil) {
+        _osName = [[self.device.systemName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] AIF_defaultValue:@""];
     }
-    return _o;
+    return _osName;
 }
- - (NSString *)v
+ - (NSString *)osVersion
 {
-    if (_v == nil) {
-        _v = [self.device systemVersion];
+    if (_osVersion == nil) {
+        _osVersion = [self.device systemVersion];
     }
-    return _v;
+    return _osVersion;
 }
 
-- (NSString *)i
+- (NSString *)appVersion
 {
-    return self.uuid;
-}
-
-- (NSString *)cv
-{
-    if (_cv == nil) {
-        _cv = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] AIF_defaultValue:@""];
+    if (_appVersion == nil) {
+        _appVersion = @"";
+        _appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     }
-    return _cv;
+    return _appVersion;
 }
 
-- (NSString *)pm
+- (NSString *)channelID
 {
-    return self.channelID;
-}
-
-- (NSString *)macid
-{
-    if (_macid == nil) {
-        _macid = [[self.device AIF_macaddressMD5] AIF_defaultValue:@""];
+    if (_channelID == nil) {
+        _channelID = @"";
+        _channelID = [self.plist valueForKey:kChannelID];
     }
-    return _macid;
+    return _channelID;
 }
 
-- (NSString *)uuid
-{
-    if (_uuid == nil) {
-        _uuid = [[self.device AIF_uuid] AIF_defaultValue:@""];
-    }
-    return _uuid;
-}
-
-- (NSString *)from
-{
-    if (_from == nil) {
-        _from = @"mobile";
-    }
-    return _from;
-}
-
-- (NSString *)ostype2
-{
-    if (_ostype2 == nil) {
-        _ostype2 = [self.device.AIF_ostype AIF_defaultValue:@""];
-    }
-    return _ostype2;
-}
-
-- (NSString *)uuid2
-{
-    if (_uuid2 == nil) {
-        _uuid2 = [self.device.AIF_uuid AIF_defaultValue:@""];
-    }
-    return _uuid2;
-}
-
-- (NSString *)udid2
-{
-    if (_udid2 == nil) {
-        _udid2 = [self.device.AIF_uuid AIF_defaultValue:@""];
-    }
-    return _udid2;
-}
-
-- (NSString *)qtime
+- (NSString *)requestTime
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:NSLocalizedString(@"yyyyMMddHHmmss", nil)];
     return [formatter stringFromDate:[NSDate date]];
 }
 
-
-- (void)setCurrentPageNumber:(NSString *)currentPageNumber
-{
-    self.bp = _currentPageNumber;
-    _currentPageNumber = [currentPageNumber copy];
-}
-
-- (NSString *)bp
-{
-    if (_bp == nil) {
-        _bp = @"-1";
-    }
-    return _bp;
-}
-
-- (NSString *)channelID
-{
-    if (_channelID == nil) {
-        _channelID = @"A01";
-    }
-    return _channelID;
-}
-
 - (NSString *)appName
 {
     if (_appName == nil) {
-        _appName = @"i-ajk";
+        _appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     }
     return _appName;
 }
 
-- (NSString *)guid
-{
-    if (_guid == nil) {
-        NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"RTGuid.string"];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            _guid = [[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil] copy];
-        }
-        else {
-            CFUUIDRef uuid = CFUUIDCreate(NULL);
-            CFStringRef uuidStr = CFUUIDCreateString(NULL, uuid);
-            
-            _guid = [[NSString alloc] initWithFormat:@"%@",uuidStr];
-            
-            CFRelease(uuidStr);
-            CFRelease(uuid);
-            
-            [_guid writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-        }
-    }
-    return _guid;
-}
-
-- (NSString *)dvid
-{
-    return self.udid2;
-}
-
 - (NSString *)net
 {
-    if (_net == nil) {
-        _net = @"";
-        if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN) {
-            _net = @"2G3G";
-        }
-        if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWiFi) {
-            _net = @"WiFi";
-        }
+    _net = @"";
+    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN) {
+        _net = @"2G3G4G";
     }
-    return _net;
-}
+    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWiFi) {
+        _net = @"WiFi";
+    }
 
-- (NSString *)ver
-{
-    return @"1.0";
+    return _net;
 }
 
 - (NSString *)ip
@@ -255,49 +150,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
         freeifaddrs(interfaces);
     }
     return _ip;
-}
-
-- (NSString *)mac
-{
-    return self.macid;
-}
-
-- (NSString *)p
-{
-    if (_p == nil) {
-        _p = @"ios";
-    }
-    return _p;
-}
-
-- (NSString *)os
-{
-    return self.v;
-}
-
-- (NSString *)app
-{
-    return self.appName;
-}
-
-- (NSString *)ch
-{
-    return self.channelID;
-}
-
-- (NSString *)ct
-{
-    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
-    return [dateFormater stringFromDate:[NSDate date]];
-}
-
-- (NSString *)pmodel
-{
-    if (_pmodel == nil) {
-        _pmodel = [[UIDevice currentDevice] AIF_machineType];
-    }
-    return _pmodel;
 }
 
 - (BOOL)isReachable
@@ -339,7 +191,7 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
 }
 
 - (NSString *)bundleID{
-    return [[NSBundle mainBundle]bundleIdentifier];
+    return [[NSBundle mainBundle] bundleIdentifier];
 }
 
 #pragma mark - public methods
@@ -358,9 +210,6 @@ static NSString *kAIFPasteboardType = @"AIFPasteboardType";
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        _currentPageNumber = @"-1";
-    }
     return self;
 }
 
