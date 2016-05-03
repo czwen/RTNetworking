@@ -94,7 +94,7 @@
             @"net":[AIFAppContext sharedInstance].net,
             @"bundleID":[AIFAppContext sharedInstance].bundleID,
             @"ip":[AIFAppContext sharedInstance].ip,
-            } description]);
+            } description],nil);
     return @{
              @"appName":[AIFAppContext sharedInstance].appName,
              @"deviceName":[AIFAppContext sharedInstance].deviceName,

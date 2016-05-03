@@ -234,7 +234,7 @@ typedef NS_ENUM (NSUInteger, RTAPIManagerRequestType){
  RTAPIBaseManager的派生类必须符合这些protocal
  */
 @protocol RTAPIManager <NSObject>
-
+@property (nonatomic, readonly) NSDictionary *additionalHeaderFields;
 @required
 - (NSString *)methodName;
 - (NSString *)serviceType;
@@ -244,7 +244,6 @@ typedef NS_ENUM (NSUInteger, RTAPIManagerRequestType){
 - (void)cleanData;
 - (NSDictionary *)reformParams:(NSDictionary *)params;
 - (BOOL)shouldCache;
-
 @end
 
 

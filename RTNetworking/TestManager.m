@@ -40,4 +40,9 @@
     return YES;
 }
 
+- (NSDictionary *)additionalHeaderFields{
+    return @{
+             @"X-Hash":@"123123"
+             };
+}
 @end

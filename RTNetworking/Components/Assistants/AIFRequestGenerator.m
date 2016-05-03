@@ -47,7 +47,7 @@
     return sharedInstance;
 }
 
-- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName
+- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers
 {
     AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
     
@@ -81,7 +81,10 @@
     
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
     
-    request.allHTTPHeaderFields = [service headersDictionary];
+    NSMutableDictionary *headerFiedls = [NSMutableDictionary dictionaryWithDictionary:[service headersDictionary]];
+    [headerFiedls addEntriesFromDictionary:headers];
+    
+    request.allHTTPHeaderFields = headerFiedls;
     
     request.timeoutInterval = kAIFNetworkingTimeoutSeconds;
     
