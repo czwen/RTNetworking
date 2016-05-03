@@ -72,6 +72,20 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
     return [requestId integerValue];
 }
 
+- (NSInteger)callPUTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
+{
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"PUT" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+    return [requestId integerValue];
+}
+
+- (NSInteger)callDELETEWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
+{
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"DELETE" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+    return [requestId integerValue];
+}
+
 - (void)cancelRequestWithRequestID:(NSNumber *)requestID
 {
     NSURLSessionDataTask *task = self.dispatchTable[requestID];

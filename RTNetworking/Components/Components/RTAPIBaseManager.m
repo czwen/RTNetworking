@@ -147,6 +147,12 @@
                         case RTAPIManagerRequestTypePost:
                             AXCallAPI(POST, requestId);
                             break;
+                        case RTAPIManagerRequestTypePut:
+                            AXCallAPI(PUT, requestId);
+                            break;
+                        case RTAPIManagerRequestTypeDelete:
+                            AXCallAPI(DELETE, requestId);
+                            break;
                         default:
                             break;
                     }
