@@ -19,8 +19,8 @@
 @property (nonatomic, readonly) NSString *offlineApiVersion;
 @property (nonatomic, readonly) NSString *onlineApiVersion;
 
-@property (nonatomic, readonly) NSDictionary *onlinePublicKey;
-@property (nonatomic, readonly) NSDictionary *offlinePublicKey;
+@property (nonatomic, readonly) NSString *onlinePublicKey;
+@property (nonatomic, readonly) NSString *offlinePublicKey;
 
 @property (nonatomic, readonly) NSString *onlinePrivateKey;
 @property (nonatomic, readonly) NSString *offlinePrivateKey;
@@ -37,7 +37,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *headersDictionary;
 @property (nonatomic, strong, readonly) NSDictionary *commonParamsDictionary;
-@property (nonatomic, strong, readonly) NSDictionary *publicKey;
+@property (nonatomic, strong, readonly) NSString *publicKey;
 @property (nonatomic, strong, readonly) NSString *privateKey;
 @property (nonatomic, strong, readonly) NSString *apiBaseUrl;
 @property (nonatomic, strong, readonly) NSString *apiVersion;

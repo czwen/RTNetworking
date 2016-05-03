@@ -33,9 +33,9 @@
     return @"";
 }
 
-- (NSDictionary *)onlinePublicKey
+- (NSString *)onlinePublicKey
 {
-    return @{@"api_key":@"1123"};
+    return @"";
 }
 
 - (NSString *)offlineApiBaseUrl
@@ -53,7 +53,7 @@
     return self.onlinePrivateKey;
 }
 
-- (NSDictionary *)offlinePublicKey
+- (NSString *)offlinePublicKey
 {
     return self.onlinePublicKey;
 }
@@ -71,7 +71,6 @@
 - (NSDictionary *)serviceHeadersDictionary
 {
     NSMutableDictionary *headerDic = [NSMutableDictionary dictionary];
-    [headerDic addEntriesFromDictionary:self.publicKey];
     [headerDic setValue:@"application/json" forKey:@"Accept"];
     [headerDic setValue:@"application/json" forKey:@"Content-Type"];
     NSDictionary *loginResult = [[NSUserDefaults standardUserDefaults] objectForKey:@"______"];

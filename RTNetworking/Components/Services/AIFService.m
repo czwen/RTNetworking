@@ -31,7 +31,7 @@
     return self.child.isOnline ? self.child.onlinePrivateKey : self.child.offlinePrivateKey;
 }
 
-- (NSDictionary *)publicKey
+- (NSString *)publicKey
 {
     /*************
      *  example  *
