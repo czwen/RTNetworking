@@ -26,4 +26,11 @@
 	return hashStr;
 }
 
++ (NSString *)AX_nonceString32
+{
+    CFUUIDRef cfuuid = CFUUIDCreate (kCFAllocatorDefault);
+    NSString *uuid = (__bridge_transfer NSString *)(CFUUIDCreateString (kCFAllocatorDefault, cfuuid));
+    CFRelease (cfuuid);
+    return uuid;
+}
 @end

@@ -12,5 +12,5 @@
 
 - (NSString *)AX_md5;
 
-
++ (NSString *)AX_nonceString32;
 @end

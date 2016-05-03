@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AIFNetworking.h"
 #import "TestManager.h"
-
+#import "NSString+AXNetworkingMethods.h"
 @interface ViewController ()<RTAPIManagerApiCallBackDelegate,RTAPIManagerParamSourceDelegate>
 @property (nonatomic, strong) TestManager *testManager;
 @end
@@ -22,6 +22,9 @@
 {
     [super viewDidLoad];
     [self.testManager loadData];
+    NSLog([NSString AX_nonceString32]);
+    NSLog([NSString AX_nonceString32]);
+    NSLog([NSString AX_nonceString32]);
 }
 
 - (void)viewDidAppear:(BOOL)animated
