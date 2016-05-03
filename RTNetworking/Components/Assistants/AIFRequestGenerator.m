@@ -59,16 +59,14 @@
     BOOL needSignture = [service.signature respondsToSelector:@selector(signWithSigParams:methodName:apiVersion:privateKey:publicKey:)];
     
     if (needSignture) {
-        
-        [sigParams addEntriesFromDictionary:service.publicKey];
-        
+    
         if (service.isSingtureAllParamters) {
             
-            signature = [service.signature signWithSigParams:allParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey.allValues.firstObject];
+            signature = [service.signature signWithSigParams:allParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey];
             
         }else{
             
-            signature = [service.signature signWithSigParams:sigParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey.allValues.firstObject];
+            signature = [service.signature signWithSigParams:sigParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey];
             
         }
         [sigParams addEntriesFromDictionary:signature];
