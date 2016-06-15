@@ -20,6 +20,7 @@
 @interface AIFRequestGenerator ()
 
 @property (nonatomic, strong) AFHTTPRequestSerializer *httpRequestSerializer;
+@property (nonatomic, strong) AFJSONRequestSerializer *jsonRequestSerializer;
 
 @end
 
@@ -34,6 +35,16 @@
         _httpRequestSerializer.cachePolicy = NSURLRequestUseProtocolCachePolicy;
     }
     return _httpRequestSerializer;
+}
+
+- (AFJSONRequestSerializer *)jsonRequestSerializer
+{
+    if (_jsonRequestSerializer == nil) {
+        _jsonRequestSerializer = [AFJSONRequestSerializer serializer];
+        _jsonRequestSerializer.timeoutInterval = kAIFNetworkingTimeoutSeconds;
+        _jsonRequestSerializer.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    }
+    return _jsonRequestSerializer;
 }
 
 #pragma mark - public methods
@@ -77,10 +88,18 @@
     
     NSString *urlString = [[service.apiBaseUrl stringByAppendingPathComponent:service.apiVersion] stringByAppendingPathComponent:methodName];
     
-    NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
-    
     NSMutableDictionary *headerFiedls = [NSMutableDictionary dictionaryWithDictionary:[service headersDictionary]];
     [headerFiedls addEntriesFromDictionary:headers];
+    
+    NSMutableURLRequest *request;
+    
+    NSString *contentType = [headerFiedls valueForKey:@"Content-Type"];
+    
+    if ([contentType isEqualToString:@"application/json"]) {
+        request = [self.jsonRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
+    }else{
+        request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
+    }
     
     request.allHTTPHeaderFields = headerFiedls;
     
