@@ -10,6 +10,7 @@
 #import "AIFURLResponse.h"
 
 typedef void(^AXCallback)(AIFURLResponse *response);
+typedef void(^AXProgressCallback)(CGFloat progress);
 
 @interface AIFApiProxy : NSObject
 

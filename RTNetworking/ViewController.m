@@ -10,6 +10,8 @@
 #import "AIFNetworking.h"
 #import "TestManager.h"
 #import "NSString+AXNetworkingMethods.h"
+#import <AFNetworking.h>
+
 @interface ViewController ()<RTAPIManagerApiCallBackDelegate,RTAPIManagerParamSourceDelegate>
 @property (nonatomic, strong) TestManager *testManager;
 @end
@@ -22,9 +24,21 @@
 {
     [super viewDidLoad];
     [self.testManager loadData];
-    NSLog([NSString AX_nonceString32]);
-    NSLog([NSString AX_nonceString32]);
-    NSLog([NSString AX_nonceString32]);
+    
+//    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    [manager.requestSerializer setValue:@"eEkctWjYNBOwyjPxwABddY1FTNSOOtDF9h8UYmXDe2XbXSxqibgaJHQNisvbcozX" forHTTPHeaderField:@"token"];
+//    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+//    NSURLSessionDataTask *task = [manager POST:@"http:/192.168.11.14:8000/api/v1/profile/avatar" parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//        [formData appendPartWithFileData:UIImagePNGRepresentation([UIImage imageNamed:@"minion"]) name:@"avatar" fileName:@"img.png" mimeType:@"image/png"];
+//    } progress:^(NSProgress * _Nonnull uploadProgress) {
+//        
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        
+//    }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,7 +60,7 @@
 - (NSDictionary *)paramsForApi:(RTAPIBaseManager *)manager
 {
     return @{
-            @"phone": @"13688893496",
+            @"avatar":UIImagePNGRepresentation([UIImage imageNamed:@"minion"])
             };
 }
 

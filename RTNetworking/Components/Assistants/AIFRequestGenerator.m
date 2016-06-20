@@ -67,6 +67,17 @@
     NSMutableDictionary *allParams;
     NSDictionary *signature;
     
+    __block NSDictionary *dataParams;
+    
+    [[[requestParams allKeys] copy] enumerateObjectsUsingBlock:^(id  _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+        id value = requestParams[key];
+        
+        if ([value isKindOfClass:[NSData class]]) {
+            dataParams = @{key:value};
+            [sigParams removeObjectForKey:key];
+        }
+    }];
+    
     BOOL needSignture = [service.signature respondsToSelector:@selector(signWithSigParams:methodName:apiVersion:privateKey:publicKey:)];
     
     if (needSignture) {
@@ -97,6 +108,11 @@
     
     if ([contentType isEqualToString:@"application/json"]) {
         request = [self.jsonRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
+    }else if ([contentType isEqualToString:@"multipart/form-data"]) {
+        request = [self.httpRequestSerializer multipartFormRequestWithMethod:method URLString:urlString parameters:allParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            [formData appendPartWithFileData:dataParams.allValues.firstObject name:dataParams.allKeys.firstObject fileName:@"file" mimeType:@""];
+        } error:nil];
+        [headerFiedls removeObjectForKey:@"Content-Type"];
     }else{
         request = [self.httpRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
     }

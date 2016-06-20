@@ -108,45 +108,69 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
     NSNumber *requestId = [self generateRequestId];
     
     // 跑到这里的block的时候，就已经是主线程了。
-    NSURLSessionDataTask *task = [self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSURLSessionDataTask *task = [self.sessionManager dataTaskWithRequest:request
+                                                           uploadProgress:^(NSProgress *uploadProgress){
+                                                               
+                                                           }
+                                                         downloadProgress:^(NSProgress *uploadProgress){
+                                                             
+                                                         }
+                                                        completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                                                            NSURLSessionDataTask *storedTask = self.dispatchTable[requestId];
+                                                            if (storedTask == nil) {
+                                                                // 如果这个operation是被cancel的，那就不用处理回调了。
+                                                                return;
+                                                            }else{
+                                                                [self.dispatchTable removeObjectForKey:requestId];
+                                                            }
+                                                            NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                                            
+                                                            if (!error) {
+                                                                
+                                                                // success
+                                                                
+                                                                [AIFLogger logDebugInfoWithResponse:(NSHTTPURLResponse*)response
+                                                                                      resposeString:responseString
+                                                                                            request:request
+                                                                                              error:NULL];
+                                                                
+                                                                AIFURLResponse *response = [[AIFURLResponse alloc] initWithResponseString:responseString
+                                                                                                                                requestId:requestId
+                                                                                                                                  request:request
+                                                                                                                             responseData:responseObject
+                                                                                                                                   status:AIFURLResponseStatusSuccess];
+                                                                success?success(response):nil;
+                                                            }else{
+                                                                [AIFLogger logDebugInfoWithResponse:(NSHTTPURLResponse*)response
+                                                                                      resposeString:responseString
+                                                                                            request:request
+                                                                                              error:error];
+                                                     
+                                                                AIFURLResponse *response = [[AIFURLResponse alloc] initWithResponseString:responseString
+                                                                                                                                requestId:requestId
+                                                                                                                                  request:request
+                                                                                                                             responseData:responseObject
+                                                                                                                                    error:error];
+                                                                 fail?fail(response):nil;
+                                                            }
+                                                        }];
+    
+    self.dispatchTable[requestId] = task;
+    [task resume];
+    return requestId;
+}
+
+
+/** 上傳文件 */
+- (NSNumber *)callApiWithRequest:(NSURLRequest *)request Success:(AXCallback)success fail:(AXCallback)fail{
+    NSNumber *requestId = [self generateRequestId];
+    
+    NSURLSessionDataTask *task = [self.sessionManager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
-        NSURLSessionDataTask *storedTask = self.dispatchTable[requestId];
-        if (storedTask == nil) {
-            // 如果这个operation是被cancel的，那就不用处理回调了。
-            return;
-        }else{
-            [self.dispatchTable removeObjectForKey:requestId];
-        }
-        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
         
-        if (!error) {
-            
-            // success
-            
-            [AIFLogger logDebugInfoWithResponse:(NSHTTPURLResponse*)response
-                                  resposeString:responseString
-                                        request:request
-                                          error:NULL];
-            
-            AIFURLResponse *response = [[AIFURLResponse alloc] initWithResponseString:responseString
-                                                                            requestId:requestId
-                                                                              request:request
-                                                                         responseData:responseObject
-                                                                               status:AIFURLResponseStatusSuccess];
-            success?success(response):nil;
-        }else{
-            [AIFLogger logDebugInfoWithResponse:(NSHTTPURLResponse*)response
-                                  resposeString:responseString
-                                        request:request
-                                          error:error];
- 
-            AIFURLResponse *response = [[AIFURLResponse alloc] initWithResponseString:responseString
-                                                                            requestId:requestId
-                                                                              request:request
-                                                                         responseData:responseObject
-                                                                                error:error];
-             fail?fail(response):nil;
-        }
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
     }];
     
     self.dispatchTable[requestId] = task;
