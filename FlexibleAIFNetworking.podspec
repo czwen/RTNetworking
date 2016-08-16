@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name     = "FlexibleAIFNetworking"
 
-  s.version  = "1.0.6"
+  s.version  = "1.0.7"
 
   s.license = { :type => "MIT" }
 

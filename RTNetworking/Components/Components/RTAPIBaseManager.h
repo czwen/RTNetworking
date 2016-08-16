@@ -49,10 +49,10 @@ static NSString * const kRTAPIBaseManagerRequestID = @"kRTAPIBaseManagerRequestI
 //api回调
 @protocol RTAPIManagerApiCallBackDelegate <NSObject>
  @required
-
-- (void)managerCallAPIProgress:(RTAPIBaseManager *)manager percentage:(CGFloat)percentage;
 - (void)managerCallAPIDidSuccess:(RTAPIBaseManager *)manager;
 - (void)managerCallAPIDidFailed:(RTAPIBaseManager *)manager;
+@optional
+- (void)managerCallAPIProgress:(RTAPIBaseManager *)manager percentage:(CGFloat)percentage;
 @end
 
 
