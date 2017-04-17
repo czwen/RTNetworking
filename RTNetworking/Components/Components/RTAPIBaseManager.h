@@ -201,6 +201,10 @@ static NSString * const kRTAPIBaseManagerRequestID = @"kRTAPIBaseManagerRequestI
 @protocol RTAPIManagerParamSourceDelegate <NSObject>
  @required
 - (NSDictionary *)paramsForApi:(RTAPIBaseManager *)manager;
+@optional
+- (NSString *)fileNameForApi:(RTAPIBaseManager *)manager;
+
+
 @end
 
 /*

@@ -12,6 +12,5 @@
 
 + (instancetype)sharedInstance;
 
-- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers;
-
+- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers;
 @end

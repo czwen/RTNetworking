@@ -58,30 +58,30 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
 }
 
 #pragma mark - public methods
-- (NSInteger)callGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
+- (NSInteger)callGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"GET" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName additionalHTTPHeader:headers];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"GET" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName fileName:fileName additionalHTTPHeader:headers];
     NSNumber *requestId = [self callApiWithRequest:request progress:progress success:success fail:fail];
     return [requestId integerValue];
 }
 
-- (NSInteger)callPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
+- (NSInteger)callPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"POST" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName additionalHTTPHeader:headers];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"POST" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName fileName:fileName additionalHTTPHeader:headers];
     NSNumber *requestId = [self callApiWithRequest:request progress:progress success:success fail:fail];
     return [requestId integerValue];
 }
 
-- (NSInteger)callPUTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
+- (NSInteger)callPUTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"PUT" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName additionalHTTPHeader:headers];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"PUT" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName fileName:fileName  additionalHTTPHeader:headers];
     NSNumber *requestId = [self callApiWithRequest:request progress:progress success:success fail:fail];
     return [requestId integerValue];
 }
 
-- (NSInteger)callDELETEWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
+- (NSInteger)callDELETEWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers progress:(AXProgressCallback)progress success:(AXCallback)success fail:(AXCallback)fail
 {
-    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"DELETE" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName additionalHTTPHeader:headers];
+    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generateRequestMethod:@"DELETE" withServiceIdentifier:servieIdentifier requestParams:params methodName:methodName fileName:fileName  additionalHTTPHeader:headers];
     NSNumber *requestId = [self callApiWithRequest:request progress:progress success:success fail:fail];
     return [requestId integerValue];
 }

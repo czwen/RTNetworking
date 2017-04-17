@@ -58,7 +58,7 @@
     return sharedInstance;
 }
 
-- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName additionalHTTPHeader:(NSDictionary *)headers
+- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers
 {
     AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
     
@@ -110,7 +110,7 @@
         request = [self.jsonRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
     }else if ([contentType isEqualToString:@"multipart/form-data"]) {
         request = [self.httpRequestSerializer multipartFormRequestWithMethod:method URLString:urlString parameters:allParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-            [formData appendPartWithFileData:dataParams.allValues.firstObject name:dataParams.allKeys.firstObject fileName:@"file" mimeType:@""];
+            [formData appendPartWithFileData:dataParams.allValues.firstObject name:dataParams.allKeys.firstObject fileName:fileName?:@"file" mimeType:[AIFRequestGenerator mimeTypeForData:dataParams.allValues.firstObject]];
         } error:nil];
         [headerFiedls removeObjectForKey:@"Content-Type"];
     }else{
@@ -126,4 +126,36 @@
     return request;
 }
 
++ (NSString *)mimeTypeForData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return @"image/jpeg";
+            break;
+        case 0x89:
+            return @"image/png";
+            break;
+        case 0x47:
+            return @"image/gif";
+            break;
+        case 0x49:
+        case 0x4D:
+            return @"image/tiff";
+            break;
+        case 0x25:
+            return @"application/pdf";
+            break;
+        case 0xD0:
+            return @"application/vnd";
+            break;
+        case 0x46:
+            return @"text/plain";
+            break;
+        default:
+            return @"application/octet-stream";
+    }
+    return @"";
+}
 @end

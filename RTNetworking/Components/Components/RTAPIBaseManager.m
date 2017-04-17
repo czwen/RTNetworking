@@ -14,7 +14,7 @@
 
 #define AXCallAPI(REQUEST_METHOD, REQUEST_ID)                                                       \
 {\
-REQUEST_ID = [[AIFApiProxy sharedInstance] call##REQUEST_METHOD##WithParams:apiParams serviceIdentifier:self.child.serviceType methodName:self.child.methodName additionalHTTPHeader:[self.child respondsToSelector:@selector(additionalHeaderFields)]?self.child.additionalHeaderFields:@{} progress:^(CGFloat percentage) {[self updateProgressPercentage:percentage];} success:^(AIFURLResponse *response) { \
+REQUEST_ID = [[AIFApiProxy sharedInstance] call##REQUEST_METHOD##WithParams:apiParams serviceIdentifier:self.child.serviceType methodName:self.child.methodName fileName:[self.paramSource respondsToSelector:@selector(fileNameForApi:)]?([self.paramSource fileNameForApi:self]?:@""):@""additionalHTTPHeader:[self.child respondsToSelector:@selector(additionalHeaderFields)]?self.child.additionalHeaderFields:@{} progress:^(CGFloat percentage) {[self updateProgressPercentage:percentage];} success:^(AIFURLResponse *response) { \
 [self successedOnCallingAPI:response];                                          \
 } fail:^(AIFURLResponse *response) {                                                \
 [self failedOnCallingAPI:response withErrorType:RTAPIManagerErrorTypeDefault];  \
