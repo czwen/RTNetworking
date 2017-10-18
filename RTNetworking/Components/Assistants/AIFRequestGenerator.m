@@ -58,7 +58,7 @@
     return sharedInstance;
 }
 
-- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName fileName:(NSString *)fileName additionalHTTPHeader:(NSDictionary *)headers
+- (NSURLRequest *)generateRequestMethod:(NSString *)method withServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName fileName:(NSDictionary *)fileNames additionalHTTPHeader:(NSDictionary *)headers
 {
     AIFService *service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
     
@@ -110,7 +110,16 @@
         request = [self.jsonRequestSerializer requestWithMethod:method URLString:urlString parameters:allParams error:NULL];
     }else if ([contentType isEqualToString:@"multipart/form-data"]) {
         request = [self.httpRequestSerializer multipartFormRequestWithMethod:method URLString:urlString parameters:allParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-            [formData appendPartWithFileData:dataParams.allValues.firstObject name:dataParams.allKeys.firstObject fileName:fileName?:@"file" mimeType:[AIFRequestGenerator mimeTypeForData:dataParams.allValues.firstObject]];
+            [requestParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                NSLog(@"-=-=-=-=-= %@",obj);
+                if ([obj isKindOfClass:[NSData class]]) {
+                    [formData appendPartWithFileData:obj name:key fileName:[fileNames valueForKey:key]?:@"file" mimeType:[AIFRequestGenerator mimeTypeForData:obj]];
+                }else if ([obj isKindOfClass:[NSString class]]){
+                    [formData appendPartWithFormData:[obj dataUsingEncoding:NSUTF8StringEncoding] name:key];
+                }else if ([obj isKindOfClass:[NSNumber class]]){
+                    [formData appendPartWithFormData:[[NSString stringWithFormat:@"%@",obj] dataUsingEncoding:NSUTF8StringEncoding] name:key];
+                }
+            }];
         } error:nil];
         [headerFiedls removeObjectForKey:@"Content-Type"];
     }else{
