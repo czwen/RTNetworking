@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name     = "FlexibleAIFNetworking"
 
-  s.version  = "1.0.9"
+  s.version  = "1.1.0"
 
   s.license = { :type => "MIT" }
 
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.author = { "ChenZhiWen" => "czwen1993@gmail.com" }
 
-  s.source   = { :git => "https://github.com/czwen/RTNetworking.git" }
+  s.source   = { :git => "https://github.com/czwen/RTNetworking.git", :tag => s.version.to_s }
 
   s.homepage = "https://github.com/czwen/RTNetworking"
 
