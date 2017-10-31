@@ -19,13 +19,14 @@
 @property (nonatomic, assign, readwrite) NSInteger requestId;
 @property (nonatomic, copy, readwrite) NSData *responseData;
 @property (nonatomic, assign, readwrite) BOOL isCache;
+@property (nonatomic, copy, readwrite) NSDictionary *allHeaderFields;
 
 @end
 
 @implementation AIFURLResponse
 
 #pragma mark - life cycle
-- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData status:(AIFURLResponseStatus)status
+- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData allHeaderFields:(NSDictionary *)allHeaderFields status:(AIFURLResponseStatus)status
 {
     self = [super init];
     if (self) {
@@ -37,11 +38,12 @@
         self.responseData = responseData;
         self.requestParams = request.requestParams;
         self.isCache = NO;
+        self.allHeaderFields = allHeaderFields;
     }
     return self;
 }
 
-- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData error:(NSError *)error
+- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData allHeaderFields:(NSDictionary *)allHeaderFields error:(NSError *)error
 {
     self = [super init];
     if (self) {
@@ -52,6 +54,7 @@
         self.responseData = responseData;
         self.requestParams = request.requestParams;
         self.isCache = NO;
+        self.allHeaderFields = allHeaderFields;
         
         if (responseData) {
             self.content = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];

@@ -124,7 +124,8 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
                                                                 [self.dispatchTable removeObjectForKey:requestId];
                                                             }
                                                             NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                                            
+                                                            NSHTTPURLResponse *result = (NSHTTPURLResponse *)response;
+                                                            NSDictionary *allHeaderFields = result.allHeaderFields;
                                                             if (!error) {
                                                                 
                                                                 // success
@@ -138,6 +139,7 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
                                                                                                                                 requestId:requestId
                                                                                                                                   request:request
                                                                                                                              responseData:responseObject
+                                                                                                                          allHeaderFields:allHeaderFields
                                                                                                                                    status:AIFURLResponseStatusSuccess];
                                                                 success?success(response):nil;
                                                             }else{
@@ -150,6 +152,7 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
                                                                                                                                 requestId:requestId
                                                                                                                                   request:request
                                                                                                                              responseData:responseObject
+                                                                                                                          allHeaderFields:allHeaderFields
                                                                                                                                     error:error];
                                                                  fail?fail(response):nil;
                                                             }
