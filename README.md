@@ -4,8 +4,8 @@
 
 `AIFNetworking` 和 `FlexibleAIFNetworking`比较
 
-|| AIFNetworking | FlexibleAIFNetworking
----|---|---|---
+|  | AIFNetworking | FlexibleAIFNetworking
+---|---|---
 灵活性|☹️|🙂
 依赖|AFNetworking 2|AFNetworking 3
 
@@ -293,7 +293,7 @@ AIFSignatureProtocol		// 多用在AIFService上，用于签名
 @end
 ```
 
-####至此，你已经能用`FlexibleAIFNetworking` 发起请求了。 
+#### 至此，你已经能用`FlexibleAIFNetworking` 发起请求了。 
 
 ## More Feature
 ####  实现API 接口的分页功能
