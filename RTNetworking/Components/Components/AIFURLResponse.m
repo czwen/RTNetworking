@@ -20,6 +20,7 @@
 @property (nonatomic, copy, readwrite) NSData *responseData;
 @property (nonatomic, assign, readwrite) BOOL isCache;
 @property (nonatomic, copy, readwrite) NSDictionary *allHeaderFields;
+@property (nonatomic, copy, readwrite) NSError *error;
 
 @end
 
@@ -55,7 +56,7 @@
         self.requestParams = request.requestParams;
         self.isCache = NO;
         self.allHeaderFields = allHeaderFields;
-        
+        self.error = error;
         if (responseData) {
             self.content = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
         } else {

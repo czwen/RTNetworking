@@ -20,6 +20,7 @@
 @property (nonatomic, copy) NSDictionary *requestParams;
 @property (nonatomic, assign, readonly) BOOL isCache;
 @property (nonatomic, copy, readonly) NSDictionary *allHeaderFields;
+@property (nonatomic, copy, readonly) NSError *error;
 
 - (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData allHeaderFields:(NSDictionary *)allHeaderFields status:(AIFURLResponseStatus)status;
 - (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData allHeaderFields:(NSDictionary *)allHeaderFields error:(NSError *)error;
