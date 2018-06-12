@@ -97,7 +97,8 @@
     [sigParams addEntriesFromDictionary:commonParameters];
     allParams = sigParams;
     
-    NSString *urlString = [[service.apiBaseUrl stringByAppendingPathComponent:service.apiVersion] stringByAppendingPathComponent:methodName];
+    NSString *additionUrlString = [[[service.apiBaseUrl hasSuffix:@"/"]?@"":@"/" stringByAppendingPathComponent:service.apiVersion] stringByAppendingPathComponent:methodName];
+    NSString *urlString = [service.apiBaseUrl stringByAppendingString:additionUrlString];
     
     NSMutableDictionary *headerFiedls = [NSMutableDictionary dictionaryWithDictionary:[service headersDictionary]];
     [headerFiedls addEntriesFromDictionary:headers];
